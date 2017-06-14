@@ -46,6 +46,7 @@ public class SearchedProductsTests extends TestBase {
 //7. Задать параметр поиска от 5000 рублей.
 //8. Выбрать производителя Beats
 //9. Нажать кнопку Применить.
+//10. Проверить, что элементов на странице 10.
 //11. Запомнить первый элемент в списке.
 //12. В поисковую строку ввести запомненное значение.
 //13. Найти и проверить, что наименование товара соответствует запомненному значению.
@@ -58,16 +59,10 @@ public class SearchedProductsTests extends TestBase {
         app.getMarketHelper().defineFromPrice("5000");
         app.getMarketHelper().defineBrand("Beats");
         app.getMarketHelper().applyFilters();
+        app.getMarketHelper().checkProductCardsAmount(12);
         String prod = app.getMarketHelper().firstProduct();
         app.getMarketHelper().searchProduct(prod);
         app.getMarketHelper().checkProductCardTitle(prod);
     }
-
-
-    @Test
-    public void testDraftMail() {
-
-    }
-
 
 }
